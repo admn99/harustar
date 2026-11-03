@@ -134,6 +134,7 @@ textarea{width:100%;height:76px;border-radius:12px;border:1px solid var(--line);
 .rowi .chev{color:var(--dim);font-size:24px;line-height:1}
 .rowi select{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px}
 :root[data-sty="dot"] .sc{border-radius:50%}
+.c.out.has{opacity:.4;pointer-events:auto}
 </style>
 </head>
 <body>
@@ -227,7 +228,7 @@ function render(){
     var d=new Date(y,m,1-off+i), k=ds(d), out=d.getMonth()!==m, e=data[k], c="c";
     if(out)c+=" out"; else if(k>today)c+=" fut";
     if(k===today)c+=" today";
-    if(e&&!out){sum+=e.r;cnt++;
+    if(e){if(!out){sum+=e.r;cnt++}
       h+='<button class="'+c+' has '+cls(e.r)+'" data-d="'+k+'">'+(sty==="dot"?'<span class="dn">'+d.getDate()+'</span><span class="r3">'+lights(e.r)+'</span>':'<span class="dn">'+d.getDate()+'</span><i class="nubv"></i><span class="col3">'+wides(e.r)+'</span>')+'</button>';
     }else h+='<button class="'+c+'" data-d="'+k+'">'+(k===today?'+':d.getDate())+'</button>';
   }
